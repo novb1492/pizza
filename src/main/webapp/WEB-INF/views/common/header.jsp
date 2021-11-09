@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%String email=(String)session.getAttribute("email");
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+ <%String email="kim@kim.com";
   
  %>
 <!DOCTYPE html>

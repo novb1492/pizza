@@ -28,18 +28,18 @@ public class buketService {
 		int bid=Integer.parseInt(jsonObject.get("bid").toString());
 		Map<String, Object>map=buketDao.findByBid(bid);
 		logger.info("장바구니 조회결과" +map.toString());
-		String dbEmail=(String)map.get("BEMAIL");
+		String dbEmail=(String)map.get("CEMAIL");
 		int num=Integer.parseInt(jsonObject.get("num").toString());
 		if(!dbEmail.equals("kim@kim.com")) {
 			throw utillService.makeRuntimeEX("장바구니 이메일 불일치", "changeCount");
 		}/*else if(num!=1||num!=1) {
 			throw utillService.makeRuntimeEX("카운트 수량을 조작하였습니다", "changeCount");
 		}*/
-		int dbCount=Integer.parseInt(map.get("BCOUNT").toString());
+		int dbCount=Integer.parseInt(map.get("CCOUNT").toString());
 		dbCount +=num;
 		
-		if(dbCount<=-1) {
-			return utillService.makeJson(false, "수량이 0입니다");
+		if(dbCount<=0) {
+			return utillService.makeJson(false, "0");
 		}else {
 			Map<String, Object>map2=new HashMap<String, Object>();
 			map2.put("count", dbCount);

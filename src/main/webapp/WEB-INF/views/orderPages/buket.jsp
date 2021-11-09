@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../common/header.jsp" %>
 <% 
 List<Map<String, Object>>maps=(List<Map<String, Object>>)request.getAttribute("maps");
@@ -258,7 +257,7 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 						<%
 							for(Map<String,Object>map:maps){
 							%>	
-								<tbody>
+								<tbody id="<%=map.get("CNUM")%>body">
 								<tr id="cart_spin">						
 							<td rowspan="2">
 								<label>

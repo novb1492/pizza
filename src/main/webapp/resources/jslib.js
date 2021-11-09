@@ -28,6 +28,10 @@ function test(bid,num,originPrice){
 		$('.totalPrice').append(totalPrice);
 
 	}else{
+		if(re.message=="0"){
+			$('#'+bid+'body').empty();
+			return;
+		}
 		alert(re.message);
 	}
 }
