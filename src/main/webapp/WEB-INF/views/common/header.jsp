@@ -3,7 +3,7 @@
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
  <%
- session.setAttribute("email", "kim@kim.com");
+ session.setAttribute("email", "kim@kim.com2");
  String email="kim@kim.com";
   
  %>

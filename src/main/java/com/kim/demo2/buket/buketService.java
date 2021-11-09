@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
-import com.kim.demo2.restController;
 import com.kim.demo2.utillService;
 
 import Daos.buketDao;
@@ -24,7 +24,24 @@ public class buketService {
 	
 	@Autowired
 	private buketDao buketDao;
-	
+	public boolean getCartByEmail(String email,Model model) {
+		logger.info("getCartByEmail");
+		List<Map<String, Object>>maps=buketDao.findByEmail(email);
+		if(maps.isEmpty()) {
+			return true;
+		}
+		int price=20000;
+		int totalPrice=0;
+		for(Map<String, Object>map:maps) {
+			int countAndPrice=price*Integer.parseInt(map.get("CCOUNT").toString());
+			map.put("img", "http://cdn.mrpizza.co.kr/2011/uploadV1/product_new/2021630152735817.jpg");
+			map.put("price", countAndPrice);
+			totalPrice+=countAndPrice;
+		}
+		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("maps",maps);
+		return false;
+	}
 	public JSONObject changeCount(JSONObject jsonObject) {
 		logger.info("changeCount");
 		System.out.println(jsonObject);

@@ -201,7 +201,6 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 							
 							
 						</p>
-						<p><a href="javascript:void(0);" onclick="javscript:setOrderTypeSelection(1, 'move');" class="button h30 p10 white"><img src="//cdn.mrpizza.co.kr/2014_resources/images/order/ic_reset.gif" alt="주문유형변경 아이콘"> 주문유형변경</a></p>
 					</div>
 					<ul><!-- on클래스로 제어 -->
 						<li class="bg1 on"><p>장바구니</p></li>
