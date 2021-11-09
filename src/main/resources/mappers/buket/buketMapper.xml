@@ -14,5 +14,8 @@
 	<update id="updateCount" parameterType="Map" >
 		update cart set CCOUNT=#{count} where CNUM=#{bid}
 	</update>
+	<delete id="deleteById" parameterType="_int">
+		delete from cart where CNUM=#{cnum}
+	</delete>
 
 </mapper>

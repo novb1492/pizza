@@ -39,6 +39,7 @@ public class buketService {
 		dbCount +=num;
 		
 		if(dbCount<=0) {
+			buketDao.deleteById(bid);
 			return utillService.makeJson(false, "0");
 		}else {
 			Map<String, Object>map2=new HashMap<String, Object>();

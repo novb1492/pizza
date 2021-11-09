@@ -8,4 +8,5 @@ public interface buketDao {
  public List<Map<String, Object>>findAll();
  public Map<String, Object> findByBid(int  bid);
  public int updateCount(Map<String, Object>map);
+ public int deleteById(int cnum);
 }
