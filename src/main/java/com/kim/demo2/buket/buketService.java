@@ -95,14 +95,16 @@ public class buketService {
 	}
 	public void totalPriceAndUser(String emil,Model model) {
 		logger.info("totalPriceAndUser");
-		getCartByEmail(emil, model);
-		Map<String, Object>map=new HashMap<String, Object>();
-		map.put("NAME", "이름");
-		map.put("ADDR", "주소");
-		map.put("MOBILE1", "010");
-		map.put("MOBILE2", "1111");
-		map.put("MOBILE3", "2222");
+		Map<String, Object>map=buketDao.findUser(emil);
+		if(map.isEmpty()) {
+			throw utillService.makeRuntimeEX("존재하지 않는 회원입니다", "totalPriceAndUser");
+		}
+		String mobile=map.get("MOBILE").toString();
+		map.put("MOBILE1", mobile.substring(0, 3));
+		map.put("MOBILE2", mobile.substring(3, 7));
+		map.put("MOBILE3", mobile.substring(7, 11));
 		model.addAttribute("user", map);
-		
+		getCartByEmail(emil, model);
+
 	}
 }

@@ -1,5 +1,7 @@
 package com.kim.demo2;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.simple.JSONObject;
 
 public class utillService {
@@ -13,4 +15,15 @@ public class utillService {
         response.put("message", message);
         return response;
     }
+    public static boolean checkNull(String s) {
+		if(s==null) {
+			return true;
+		}else if(s.isBlank()) {
+			return true;
+		}
+		return false;
+	}
+    public static String getEmail(HttpServletRequest request) {
+		return (String)request.getSession().getAttribute("email");
+	}
 }

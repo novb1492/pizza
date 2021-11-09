@@ -17,5 +17,7 @@
 	<delete id="deleteById" parameterType="_int">
 		delete from cart where CNUM=#{cnum}
 	</delete>
-
+	<select id="findUser" parameterType="String" resultType="Map">
+		select *from member where email=#{email}
+	</select>
 </mapper>

@@ -4,6 +4,7 @@
     
  <%
  session.setAttribute("email", "kim@kim.com");
+ System.out.print("tt");
  String email="kim@kim.com";
   
  %>

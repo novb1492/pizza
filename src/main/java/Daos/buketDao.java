@@ -9,4 +9,5 @@ public interface buketDao {
  public Map<String, Object> findByBid(int  bid);
  public int updateCount(Map<String, Object>map);
  public int deleteById(int cnum);
+ public Map<String, Object> findUser(String email);
 }

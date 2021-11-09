@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.kim.demo2.utillService;
 
 import Daos.buketDao;
 
@@ -20,20 +22,20 @@ public class payService {
 	@Autowired
 	private buketDao buketDao;
 	
-	public void TotalPriceAndUser(String email,Model model) {
-		logger.info("TotalPriceAndUser");
-		List<Map<String, Object>>maps=buketDao.findByEmail(email);
-		int totalPrice=0;
-		for(Map<String, Object>map:maps) {
-			int count=Integer.parseInt(map.get("CCOUNT").toString());
-			totalPrice=totalPrice+count*20000;
+	public JSONObject getPayInfor(tryBuyDto tryBuyDto,String email) {
+		logger.info("getPayInfor");
+		System.out.println(tryBuyDto.getMobile1()+tryBuyDto.getMobile2()+tryBuyDto.getMobile3());
+		if(utillService.checkNull(tryBuyDto.getMobile1())||utillService.checkNull(tryBuyDto.getMobile2())||utillService.checkNull(tryBuyDto.getMobile3())) {
+			System.out.println("ss");
+			throw utillService.makeRuntimeEX("핸드폰 번호를 확인해주세요", "getPayInfor");
 		}
-		model.addAttribute("totalPrice", totalPrice);
-		Map<String, Object>map=new HashMap<String, Object>();
-		map.put("addr", "서울시");
-		map.put("name", "이름자리");
-		map.put("phone", "010-1111-1111");
-		model.addAttribute("user", map);
+		List<Map<String, Object>>maps=buketDao.findByEmail(email);
+		if(maps.isEmpty()) {
+			throw utillService.makeRuntimeEX("장바구니가 비었습니다", "getPayInfor");
+		}
 		
+		return utillService.makeJson(true, "??");
 	}
+	
+
 }

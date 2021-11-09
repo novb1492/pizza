@@ -1,4 +1,23 @@
 var result;
+function requestOrder(){
+	var arr=document.getElementsByName('payGroup');
+		var kind;
+       for(var i=0;i<arr.length;i++){
+            if(arr[i].checked == true) {
+				kind=arr[i].value;
+				break;
+            }
+       }
+	let	data=JSON.stringify({
+         "mobile1":document.getElementById('view_delivery_phone1').value,
+          "mobile2":document.getElementById('view_delivery_phone2').value,
+           "mobile3":document.getElementById('view_delivery_phone3').value,
+           "name":document.getElementById('gift_from_nm').value,
+           "kind":kind
+          
+	}); 
+	requestToServer('/demo2/tryOrder',data);
+}
 function deletechoice(){
 	var arr = document.getElementsByName("cart_item");
 	var arr2=[];
