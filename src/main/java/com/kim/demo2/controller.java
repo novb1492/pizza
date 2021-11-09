@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kim.demo2.buket.buketService;
+import com.kim.demo2.pay.payService;
 
 import Daos.buketDao;
 
@@ -26,6 +27,9 @@ public class controller {
 
 	@Autowired
 	private buketService buketService;
+	@Autowired
+	private payService payService;
+	
 	
 	@RequestMapping(value = "/buket", method = RequestMethod.GET)
 	public String goBuket(HttpServletRequest request,HttpServletResponse response,Model model) {
@@ -36,7 +40,8 @@ public class controller {
 		return "/orderPages/buket";
 	}
 	@RequestMapping(value = "/pay", method = RequestMethod.GET)
-	public String goPay(HttpServletRequest request,HttpServletResponse response) {
+	public String goPay(HttpServletRequest request,HttpServletResponse response,Model model) {
+		buketService.totalPriceAndUser((String)request.getSession().getAttribute("email"), model);
 		return "/orderPages/pay";
 	}
 	@RequestMapping(value = "/address", method = RequestMethod.GET)

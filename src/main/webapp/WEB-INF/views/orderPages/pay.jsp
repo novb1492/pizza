@@ -1,6 +1,13 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+int totalPrice=(int)request.getAttribute("totalPrice");
+List<Map<String, Object>>maps=(List<Map<String, Object>>)request.getAttribute("maps");
+Map<String,Object>user=(Map<String,Object>)request.getAttribute("user");
+%>
 <html>
 <head>
 	<title>payPage</title>
@@ -355,7 +362,7 @@
 				<form id="paymentForm" name="paymentForm">
 					<input type="hidden" id="order_type" name="order_type" value="1"> <input type="hidden" id="branch_id" name="branch_id" value="108910">
 					<input type="hidden" id="branch_nm" name="branch_nm" value="압구정점"> <input type="hidden" id="reserv_time" name="reserv_time" value=""> <input type="hidden" id="reserv_time_text" name="reserv_time_text" value=""> <input type="hidden" id="order_memo" name="order_memo" value=""> <input type="hidden" id="naverpay_receipt" name="naverpay_receipt" value=""> <input type="hidden" id="list_price" name="list_price" value="27900"> <input type="hidden" id="disc_price" name="disc_price" value="0"> <input type="hidden" id="payment_price" name="payment_price" value="27900"> <input type="hidden" id="total_price" name="total_price" value="27,900"> <input type="hidden" id="mobileGift_desc_price" name="mobileGift_desc_price" value="0">
-					<input type="hidden" id="card_desc_price" name="card_desc_price" value="0"> <input type="hidden" id="promo_desc_price" name="promo_desc_price" value="0"> <input type="hidden" id="coupon_desc_price" name="coupon_desc_price" value="0"> <input type="hidden" id="eCoupon_desc_price" name="eCoupon_desc_price" value="0"> <input type="hidden" id="onlineGift_desc_price" name="onlineGift_desc_price" value=""> <input type="hidden" id="pay_amt" name="pay_amt" value="27,900"> <input type="hidden" id="guest_flag" name="guest_flag" value="N"> <input type="hidden" id="guest_auth_flag" name="guest_auth_flag" value="N"> <input type="hidden" id="eCoupon_otherDisc" name="eCoupon_otherDisc" value=""> <input type="hidden" id="notSaleProductCount" name="notSaleProductCount" value="0"> <input type="hidden" id="beselo_flag" name="beselo_flag" value="">
+					<input type="hidden" id="card_desc_price" name="card_desc_price" value="0"> <input type="hidden" id="promo_desc_price" name="promo_desc_price" value="0"> <input type="hidden" id="coupon_desc_price" name="coupon_desc_price" value="0"> <input type="hidden" id="eCoupon_desc_price" name="eCoupon_desc_price" value="0"> <input type="hidden" id="onlineGift_desc_price" name="onlineGift_desc_price" value=""> <input type="hidden" id="pay_amt" name="pay_amt" value="<%=totalPrice%>"> <input type="hidden" id="guest_flag" name="guest_flag" value="N"> <input type="hidden" id="guest_auth_flag" name="guest_auth_flag" value="N"> <input type="hidden" id="eCoupon_otherDisc" name="eCoupon_otherDisc" value=""> <input type="hidden" id="notSaleProductCount" name="notSaleProductCount" value="0"> <input type="hidden" id="beselo_flag" name="beselo_flag" value="">
 					<!-- <input type="hidden" id="honey_flag" name="honey_flag" value=""/> -->
 					<input type="hidden" id="alarm_flag" name="alarm_flag" value=""> <input type="hidden" id="select_dc_opt" name="select_dc_opt" value="">
 					
@@ -404,7 +411,7 @@
 										<!-- 배달주문, 포장주문 수령인 정보 -->
 										<tr>
 											<th scope="row"><i class="t_red normal">*</i> <label for="gift_from_nm">수령인</label></th>
-											<td class="t_left"><input type="text" id="gift_from_nm" name="gift_from_nm" class="inp4" placeholder="수령인이름 입력" title="수령인이름 입력" maxlength="10" value="김준영">
+											<td class="t_left"><input type="text" id="gift_from_nm" name="gift_from_nm" class="inp4" placeholder="수령인이름 입력" title="수령인이름 입력" maxlength="10" value="<%=user.get("NAME")%>">
 											</td>
 										</tr>
 										<!-- /배달주문, 포장주문 수령인 정보 -->
@@ -416,7 +423,7 @@
 										<!-- 배달주문, 포장주문 연락처 -->
 										<tr>
 											<th scope="row"><i class="t_red normal">*</i> <label for="view_delivery_phone1">연락처</label></th>
-											<td class="t_left"><input type="text" id="view_delivery_phone1" name="view_delivery_phone1" value="" class="inp6" onkeyup="chkNum(this);" maxlength="3" title="연락처 앞자리 입력"> <input type="text" id="view_delivery_phone2" name="view_delivery_phone2" value="" class="inp6" onkeyup="chkNum(this);" maxlength="4" title="연락처 중간자리 입력"> <input type="text" id="view_delivery_phone3" name="view_delivery_phone3" value="" class="inp6" onkeyup="chkNum(this);" maxlength="4" title="연락처 뒷자리 입력"> <label class="ml16">
+											<td class="t_left"><input type="text" id="view_delivery_phone1" name="view_delivery_phone1" value="<%=user.get("MOBILE1") %>" class="inp6" onkeyup="chkNum(this);"  title="연락처 앞자리 입력"> <input type="text" id="view_delivery_phone2" name="view_delivery_phone2"  value="<%=user.get("MOBILE2") %>" class="inp6" onkeyup="chkNum(this);" maxlength="4" title="연락처 중간자리 입력"> <input type="text" id="view_delivery_phone3" name="view_delivery_phone3"  value="<%=user.get("MOBILE3") %>" class="inp6" onkeyup="chkNum(this);" maxlength="4" title="연락처 뒷자리 입력"> <label class="ml16">
 													<input id="order_sms_flag" name="order_sms_flag" type="checkbox" class="checkbox" onclick="javascript:chkSmsFlag();" checked="checked"> <span class="lbl">주문정보sms받기</span>
 											</label></td>
 										</tr>
@@ -436,7 +443,7 @@
 											<th scope="row"><i class="t_red normal">*</i> 주소</th>
 											<td class="t_left">
 												<div>
-													<span class="line30">서울 강남구 가로수길 9 어딕나/신사동 536-9</span>
+													<span class="line30"><%=user.get("ADDR") %></span>
 												</div>
 											</td>
 										</tr>
@@ -742,7 +749,7 @@
 								</tbody>
 							</table>
 							<p class="mt20">
-								<a href="/order/myCart" class="button h30 w80 white btn_back"><span class="gt">&lt;</span> 뒤로</a>
+								<a href="/demo2/buket" class="button h30 w80 white btn_back"><span class="gt">&lt;</span> 뒤로</a>
 								<!--a href="javascript:orderLog();" class="button h30 w80 white btn_back"><span class="gt">&lt;</span> 클릭</a> -->
 							</p>
 						</section>
@@ -760,31 +767,38 @@
 								</div>
 								<ul class="p_list">
 									
-										
-											<li><span class="name">멕시칸 하바네로 피자 세트</span>
+											<%for(Map<String,Object>map:maps){
+											%>
+				
+										<li>
+											<span class="name"><%=map.get("CMENU") %></span>
 											
-													
-													
+											
+												
+												
+												
 														
-															
-															
-																<span class="t_org">L</span>
-															
+															<span class="t_org"><%=map.get("CSIZE") %></span>
 														
 													
-												 <span class="num">1</span> <strong>27,900원</strong>
-
-												</li>
-										
+												
+											
+											
+											<span class="<%=map.get("CNUM")%>num"><%=map.get("CCOUNT") %></span>
+											<strong class="<%=map.get("CNUM")%>price"><%=map.get("price") %></strong>
+											
+											
+										</li>
+									<%}%>
 									
 
 								</ul>
 								<ul class="dc_pay">
-									<li>주문금액 <strong id="order_list_price">27,900원</strong></li>
+									<li>주문금액 <strong id="order_list_price"><%=totalPrice %>원</strong></li>
 									<li>쿠폰할인 <strong id="order_coupon_desc_price">-0원</strong></li>									<!--<li class="t_org">온라인제품권 <strong>원</strong></li>-->
 								</ul>
 								<div class="price">
-									<b>결제예정금액</b> <strong><span id="order_payment_price">27,900</span>원</strong>
+									<b>결제예정금액</b> <strong><span id="order_payment_price"><%=totalPrice %></span>원</strong>
 								</div>
 								<p class="t_center">
 									<a href="#" onclick="requestPost('/demo2/test',null)" class="button h40 red pay_btn" id="pay_btn">결제하기 <span class="gt">&gt;</span></a>

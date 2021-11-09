@@ -93,4 +93,16 @@ public class buketService {
 		return utillService.makeJson(true,"장바구니삭제");
 		
 	}
+	public void totalPriceAndUser(String emil,Model model) {
+		logger.info("totalPriceAndUser");
+		getCartByEmail(emil, model);
+		Map<String, Object>map=new HashMap<String, Object>();
+		map.put("NAME", "이름");
+		map.put("ADDR", "주소");
+		map.put("MOBILE1", "010");
+		map.put("MOBILE2", "1111");
+		map.put("MOBILE3", "2222");
+		model.addAttribute("user", map);
+		
+	}
 }
