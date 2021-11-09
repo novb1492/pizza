@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
- <%String email="kim@kim.com";
+ <%
+ session.setAttribute("email", "kim@kim.com");
+ String email="kim@kim.com";
   
  %>
 <!DOCTYPE html>

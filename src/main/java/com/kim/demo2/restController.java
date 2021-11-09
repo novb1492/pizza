@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kim.demo2.buket.buketService;
 import com.kim.demo2.buket.changeCountDto;
+import com.kim.demo2.buket.deleteCartDto;
 
 @RestController
 public class restController {
@@ -26,6 +27,11 @@ public class restController {
 	public JSONObject changeCount(@RequestBody JSONObject jsonObject,HttpServletRequest request,HttpServletResponse response) {
 		logger.info("changeCount rest");
 		return buketService.changeCount(jsonObject);
+	}
+	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
+	public JSONObject deleteCart(@RequestBody deleteCartDto dto,HttpServletRequest request,HttpServletResponse response) {
+		logger.info("deleteCart rest");
+		return buketService.deleteCart(dto,(request.getSession().getAttribute("email").toString()));
 	}
 
 }

@@ -1,4 +1,22 @@
 var result;
+function deletechoice(){
+	var arr = document.getElementsByName("cart_item");
+	var arr2=[];
+       for(var i=0;i<arr.length;i++){
+            if(arr[i].checked == true) {
+				arr2[arr2.length]=arr[i].value;
+            }
+       }
+    let	data=JSON.stringify({
+         "arr":arr2
+	}); 
+	var result=requestToServer('/demo2/deleteCart',data);
+	if(result.flag){
+		location.reload();
+		return;	
+	}
+	alert(result.message);
+}
 function checkAll(){
 	var arr = document.getElementsByName("cart_item");
         for(var i=0;i<arr.length;i++){
@@ -35,12 +53,7 @@ function test(bid,num,originPrice){
 		alert(re.message);
 	}
 }
-function requestToServer(url,data){
-	data=JSON.stringify({
-		 "nowPage":1,
-         "startDate":2,
-         "endDate":3
-		}); 
+function requestToServer(url,data){ 
    $.ajax({
        type: 'POST',
        url: url,

@@ -1,6 +1,8 @@
 package com.kim.demo2.buket;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -8,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kim.demo2.restController;
 import com.kim.demo2.utillService;
@@ -52,5 +55,25 @@ public class buketService {
 		response.put("count", dbCount);
 		response.put("price", dbCount*20000);
 		return response;
+	}
+	@Transactional(rollbackFor = Exception.class)
+	public JSONObject deleteCart(deleteCartDto dto,String loginEmail) {
+		logger.info("deleteCart");
+		List<Map<String, Object>>maps=new ArrayList<Map<String,Object>>();
+		List<Integer>integers=dto.getArr();
+		for(int i:integers) {
+			Map<String, Object>map=buketDao.findByBid(i);
+			maps.add(map);
+		}
+		for(Map<String, Object>map:maps) {
+			String dbemail=(String)map.get("CEMAIL");
+			if(!dbemail.equals(loginEmail)) {
+				throw utillService.makeRuntimeEX("장바구니 이메일이 일치하지 않습니다", "deleteCart");
+			}
+			
+			buketDao.deleteById(Integer.parseInt(map.get("CNUM").toString()));
+		}
+		return utillService.makeJson(true,"장바구니삭제");
+		
 	}
 }

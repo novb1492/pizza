@@ -308,7 +308,7 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 		<p class="mt10">
 			<a href="#" name="ch" onclick="checkAll()" class="button h30 w115 white">제품전체선택</a>
 			<a href="/menu/premium" class="button h30 w115 white">계속 주문하기</a>
-			<a href="#popup" class="button h30 w115 delProduct_pop_open">선택제품삭제 <span class="ic_x"></span></a>
+			<a href="#" onclick="deletechoice()" class="button h30 w115 delProduct_pop_open">선택제품삭제 <span class="ic_x"></span></a>
 		</p>
 
 		<ul class="txt_list mt40">
