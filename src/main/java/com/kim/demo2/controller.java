@@ -31,7 +31,7 @@ public class controller {
 		int price=20000;
 		int totalPrice=0;
 		for(Map<String, Object>map:maps) {
-			int countAndPrice=price*Integer.parseInt(map.get("BCOUNT").toString());
+			int countAndPrice=price*Integer.parseInt(map.get("CCOUNT").toString());
 			map.put("img", "http://cdn.mrpizza.co.kr/2011/uploadV1/product_new/2021630152735817.jpg");
 			map.put("price", countAndPrice);
 			totalPrice+=countAndPrice;

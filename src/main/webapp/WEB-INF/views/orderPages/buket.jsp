@@ -262,7 +262,7 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 								<tr id="cart_spin">						
 							<td rowspan="2">
 								<label>
-									<input type="checkbox" id="cart_item" name="cart_item" class="checkbox" value="<%=map.get("BID")%>">
+									<input type="checkbox" id="cart_item" name="cart_item" class="checkbox" value="<%=map.get("CNUM")%>">
 									<span class="lbl"><span class="blind">선택</span></span>
 								</label>
 							</td>
@@ -270,11 +270,11 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 								<img src="<%=map.get("img") %>" class="img" alt="임시이미지">
 							</td>
 							<td class="t_left">
-								<p><strong class="f16"><%=map.get("BPIZZANAME") %></strong></p>
+								<p><strong class="f16"><%=map.get("CMENU") %></strong></p>
 								
-									<p>사이즈 :<%=map.get("BPIZZASIZE") %></p>
+									<p>사이즈 :<%=map.get("CSIZE") %></p>
 
-									<p>엣지 :<%=map.get("BPIZZAEDGE") %></p>
+									<p>엣지 :<%=map.get("CEDGE") %></p>
 								
 								
 							</td>
@@ -290,16 +290,16 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 									
 								
 								<span class="ui-spinner ui-widget ui-widget-content ui-corner-all" style="height: 35px;">
-									<input class="cartSpinner ui-spinner-input" type="text" value="<%=map.get("BCOUNT") %>" id="<%=map.get("BID") %>count" title="수량입력" style="width:46px;text-align:center;" readonly="" aria-valuemin="0" aria-valuemax="25" aria-valuenow="1" autocomplete="off" role="spinbutton">
-										<a href="#" onclick="test(<%=map.get("BID")%>,1,<%=map.get("price") %>)" class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only cartPlus" tabindex="-1" role="button" aria-disabled="false">
+									<input class="cartSpinner ui-spinner-input" type="text" value="<%=map.get("CCOUNT") %>" id="<%=map.get("CNUM") %>count" title="수량입력" style="width:46px;text-align:center;" readonly="" aria-valuemin="0" aria-valuemax="25" aria-valuenow="1" autocomplete="off" role="spinbutton">
+										<a href="#" onclick="test(<%=map.get("CNUM")%>,1,<%=map.get("price") %>)" class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only cartPlus" tabindex="-1" role="button" aria-disabled="false">
 											<i class="icon icon-plus"></i>
 										</a>
-										<a href="#" onclick="test(<%=map.get("BID")%>,-1,<%=map.get("price") %>)" class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only cartMinus" tabindex="-1" role="button" aria-disabled="false">
+										<a href="#" onclick="test(<%=map.get("CNUM")%>,-1,<%=map.get("price") %>)" class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only cartMinus" tabindex="-1" role="button" aria-disabled="false">
 											<i class="icon icon-minus"></i>
 										</a>
 								</span>
 							</td>
-							<td><p class="t_price"><strong class="<%=map.get("BID")%>price" class="perprice"><%=map.get("price") %></strong>원</p></td>
+							<td><p class="t_price"><strong class="<%=map.get("CNUM")%>price" class="perprice"><%=map.get("price") %></strong>원</p></td>
 						</tr>
 							</tbody>
 					<% 	}
@@ -340,21 +340,21 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 					%>
 				
 				<li>
-					<span class="name"><%=map.get("BPIZZANAME") %></span>
+					<span class="name"><%=map.get("CMENU") %></span>
 					
 					
 						
 						
 						
 								
-									<span class="t_org"><%=map.get("BPIZZASIZE") %></span>
+									<span class="t_org"><%=map.get("CSIZE") %></span>
 								
 							
 						
 					
 					
-					<span class="<%=map.get("BID")%>num"><%=map.get("BCOUNT") %></span>
-					<strong class="<%=map.get("BID")%>price"><%=map.get("price") %></strong>
+					<span class="<%=map.get("CNUM")%>num"><%=map.get("CCOUNT") %></span>
+					<strong class="<%=map.get("CNUM")%>price"><%=map.get("price") %></strong>
 					
 					
 				</li>

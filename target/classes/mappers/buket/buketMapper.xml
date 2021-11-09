@@ -6,13 +6,13 @@
 		select* from jang
 	</select>
 		<select id="findByEmail" parameterType="String" resultType="Map">
-		 select *from jang where bemail=#{email}
+		 select *from cart where CEMAIL=#{email}
 	</select>
 	<select id="findByBid" parameterType="_int" resultType="Map">
-		select *from jang where bid=#{bid}
+		select *from cart where CNUM=#{bid}
 	</select>
 	<update id="updateCount" parameterType="Map" >
-		update jang set BCOUNT=#{count} where BID=#{bid}
+		update cart set CCOUNT=#{count} where CNUM=#{bid}
 	</update>
 
 </mapper>
