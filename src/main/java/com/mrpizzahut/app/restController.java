@@ -1,4 +1,4 @@
-package com.kim.demo2;
+package com.mrpizzahut.app;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kim.demo2.buket.buketService;
-import com.kim.demo2.buket.changeCountDto;
-import com.kim.demo2.buket.deleteCartDto;
-import com.kim.demo2.pay.payService;
-import com.kim.demo2.pay.tryBuyDto;
+import com.mrpizzahut.app.buket.buketService;
+import com.mrpizzahut.app.buket.changeCountDto;
+import com.mrpizzahut.app.buket.deleteCartDto;
+import com.mrpizzahut.app.pay.payService;
+import com.mrpizzahut.app.pay.tryBuyDto;
 
 @RestController
 public class restController {

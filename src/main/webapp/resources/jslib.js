@@ -16,7 +16,7 @@ function requestOrder(){
            "kind":kind
           
 	}); 
-	requestToServer('/demo2/tryOrder',data);
+	requestToServer('/app/tryOrder',data);
 }
 function deletechoice(){
 	var arr = document.getElementsByName("cart_item");
@@ -29,7 +29,7 @@ function deletechoice(){
     let	data=JSON.stringify({
          "arr":arr2
 	}); 
-	var result=requestToServer('/demo2/deleteCart',data);
+	var result=requestToServer('/app/deleteCart',data);
 	if(result.flag){
 		location.reload();
 		return;	
@@ -51,7 +51,7 @@ function test(bid,num,originPrice){
          "bid":bid,
          "num":num
 	}); 
-	var re=requestPutToServer('/demo2/changeCount',data);
+	var re=requestPutToServer('/app/changeCount',data);
 	if(re.flag){
 		document.getElementById(bid+'count').value=re.count;
 		$('.'+bid+'num').empty();

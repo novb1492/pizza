@@ -1,4 +1,4 @@
-package com.kim.demo2.pay;
+package com.mrpizzahut.app.pay;
 
 
 public class tryBuyDto {

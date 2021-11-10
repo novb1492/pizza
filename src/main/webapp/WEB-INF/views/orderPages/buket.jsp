@@ -384,7 +384,7 @@ int totalPrice=(int)request.getAttribute("totalPrice");
 				<strong><span class="totalPrice"><%=totalPrice %></span>원</strong>
 			</div>
 			<p class="t_center">
-				<a href="/demo2/pay"  class="button h40 red">할인선택 <span class="gt">&gt;</span></a>
+				<a href="/app/pay"  class="button h40 red">할인선택 <span class="gt">&gt;</span></a>
 			</p>
 		</div>
 	</section>

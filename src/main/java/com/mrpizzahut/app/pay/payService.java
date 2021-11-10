@@ -1,4 +1,4 @@
-package com.kim.demo2.pay;
+package com.mrpizzahut.app.pay;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.kim.demo2.utillService;
+import com.mrpizzahut.app.utillService;
 
 import Daos.buketDao;
 

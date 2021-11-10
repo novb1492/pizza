@@ -1,4 +1,4 @@
-package com.kim.demo2;
+package com.mrpizzahut.app;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,8 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kim.demo2.buket.buketService;
-import com.kim.demo2.pay.payService;
+import com.mrpizzahut.app.buket.buketService;
+import com.mrpizzahut.app.pay.payService;
 
 import Daos.buketDao;
 
@@ -34,10 +34,15 @@ public class controller {
 	@RequestMapping(value = "/buket", method = RequestMethod.GET)
 	public String goBuket(HttpServletRequest request,HttpServletResponse response,Model model) {
 		logger.info("goBuket");
-		if(buketService.getCartByEmail(request.getSession().getAttribute("email").toString(), model)) {
+		try {
+			if(buketService.getCartByEmail(request.getSession().getAttribute("email").toString(), model)) {
+				return "/home";
+			}
+			return "/orderPages/buket";
+		} catch (Exception e) {
 			return "/home";
 		}
-		return "/orderPages/buket";
+
 	}
 	@RequestMapping(value = "/pay", method = RequestMethod.GET)
 	public String goPay(HttpServletRequest request,HttpServletResponse response,Model model) {

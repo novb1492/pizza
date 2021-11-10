@@ -762,7 +762,7 @@ Map<String,Object>user=(Map<String,Object>)request.getAttribute("user");
 								</tbody>
 							</table>
 							<p class="mt20">
-								<a href="/demo2/buket" class="button h30 w80 white btn_back"><span class="gt">&lt;</span> 뒤로</a>
+								<a href="/app/buket" class="button h30 w80 white btn_back"><span class="gt">&lt;</span> 뒤로</a>
 								<!--a href="javascript:orderLog();" class="button h30 w80 white btn_back"><span class="gt">&lt;</span> 클릭</a> -->
 							</p>
 						</section>
