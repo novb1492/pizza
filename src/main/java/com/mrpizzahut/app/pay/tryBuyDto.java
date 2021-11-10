@@ -7,7 +7,16 @@ public class tryBuyDto {
 	private String  mobile2;
 	private String  mobile3;
 	private String  name;
-	private String  kind;
+	private String coupon;
+	
+	public String getcoupon() {
+		return coupon;
+	}
+	public void setcoupon(String coupon) {
+		this.coupon = coupon;
+	}
+
+	private int  kind;
 	
 	public String getMobile1() {
 		return mobile1;
@@ -33,12 +42,27 @@ public class tryBuyDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getKind() {
+	public int getKind() {
 		return kind;
 	}
-	public void setKind(String kind) {
+	public void setKind(int kind) {
 		this.kind = kind;
 	}
 	
+	////서버에서 사용할 변수
+	private String email;
+
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return coupon+","+kind;
+	}
 
 }

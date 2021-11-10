@@ -622,7 +622,7 @@ Map<String,Object>user=(Map<String,Object>)request.getAttribute("user");
 							
 								
 								
-						<input type="text" placeholder="쿠폰번호를 입력해주세요">
+						<input type="text" id="coupons" placeholder="쿠폰번호를 입력해주세요">
 								
 							
 

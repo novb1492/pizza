@@ -8,13 +8,17 @@ function requestOrder(){
 				break;
             }
        }
+   	if(kind==0){
+		alert('결제수단을 선택해주세요');
+		return;
+	}
 	let	data=JSON.stringify({
          "mobile1":document.getElementById('view_delivery_phone1').value,
           "mobile2":document.getElementById('view_delivery_phone2').value,
            "mobile3":document.getElementById('view_delivery_phone3').value,
            "name":document.getElementById('gift_from_nm').value,
-           "kind":kind
-          
+           "kind":kind,
+           "coupon":document.getElementById('coupons').value
 	}); 
 	requestToServer('/app/tryOrder',data);
 }
